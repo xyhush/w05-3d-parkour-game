@@ -10,18 +10,45 @@
 - 当前角色：红色、绿色
 - 当前玩法：三条跑道、跳跃、滑铲、换道、粉色方块、技巧方块、技能、暂停、角色选择和基础方块玩法教程
 
-## 本地运行
+## Playable URL
 
-1. 在项目根目录打开 PowerShell。
-2. 启动本地静态服务器：
+在线游玩地址：[3D Parkour Game](https://yy6605.github.io/w05-3d-parkour-game/)。
+
+该公开 GitHub Pages 站点可直接在浏览器中打开并游玩。
+
+## Run locally
+
+1. Clone the repository and enter its root directory:
+
+   ```bash
+   git clone https://github.com/yy6605/w05-3d-parkour-game.git
+   cd w05-3d-parkour-game
+   ```
+
+2. Start a local static web server:
 
    ```bash
    python -m http.server 8000
    ```
 
-3. 浏览器访问 `http://localhost:8000/w05_3d_game/`。
+3. Open the following address in a browser:
 
-Three.js（r160）已放入项目目录 `w05_3d_game/lib/three.module.js`，importmap 用相对路径加载，离线或本地静态服务器下均可运行，不再依赖外网 CDN。注意：ES 模块在 `file://` 直开时会被浏览器 CORS 策略拦截，请按上面的本地静态服务器方式运行。
+   ```text
+   http://localhost:8000/w05_3d_game/
+   ```
+
+The game is a static HTML/CSS/JavaScript project. It does not require `npm install` or a build step. Three.js (r160) is stored locally at `w05_3d_game/lib/three.module.js` and is loaded through a relative import map. Do not open `index.html` directly with `file://`, because browser CORS rules may block ES module loading; use the local static server instead.
+
+## Publishing
+
+This project is deployed with GitHub Pages from the `/docs` directory of the `main` branch.
+
+1. Keep the deployable static site in `docs/`, including `docs/index.html` and every file it references, such as the local Three.js module in `docs/lib/three.module.js`.
+2. Merge approved pull requests into the team repository's `main` branch.
+3. GitHub Pages automatically publishes the contents of `main/docs`.
+4. After the deployment finishes, open the [playable URL](https://yy6605.github.io/w05-3d-parkour-game/) and verify that the game and its assets load correctly.
+
+> Note: The development source is currently stored in `w05_3d_game/`. Before publishing an updated version, the publisher must ensure that the matching deployable files are present in `docs/`, because GitHub Pages is configured to publish `main/docs`.
 ## Purpose（游戏介绍）
 
 这是一款使用 HTML、CSS、JavaScript 和 Three.js 制作的浏览器 3D 跑酷游戏。玩家在三条跑道之间切换，通过跳跃、二段跳和滑铲躲避障碍，收集粉色能量方块，为角色技能充能并争取更高分。
