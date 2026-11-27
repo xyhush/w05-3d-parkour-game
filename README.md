@@ -16,39 +16,39 @@
 
 该公开 GitHub Pages 站点可直接在浏览器中打开并游玩。
 
-## Run locally
+## 本地运行
 
-1. Clone the repository and enter its root directory:
+1. 克隆仓库并进入项目根目录：
 
    ```bash
    git clone https://github.com/yy6605/w05-3d-parkour-game.git
    cd w05-3d-parkour-game
    ```
 
-2. Start a local static web server:
+2. 启动本地静态服务器：
 
    ```bash
    python -m http.server 8000
    ```
 
-3. Open the following address in a browser:
+3. 在浏览器中打开：
 
    ```text
    http://localhost:8000/w05_3d_game/
    ```
 
-The game is a static HTML/CSS/JavaScript project. It does not require `npm install` or a build step. Three.js (r160) is stored locally at `w05_3d_game/lib/three.module.js` and is loaded through a relative import map. Do not open `index.html` directly with `file://`, because browser CORS rules may block ES module loading; use the local static server instead.
+本项目是静态 HTML/CSS/JavaScript 游戏，不需要运行 `npm install`，也不需要构建步骤。Three.js（r160）保存在本地的 `w05_3d_game/lib/three.module.js`，通过相对路径 import map 加载。请不要直接通过 `file://` 打开 `index.html`，因为浏览器的 CORS 策略可能阻止 ES 模块加载；请使用上述本地静态服务器方式运行。
 
-## Publishing
+## 发布说明
 
-This project is deployed with GitHub Pages from the `/docs` directory of the `main` branch.
+本项目使用 GitHub Pages 发布，发布来源为 `main` 分支的 `/docs` 目录。
 
-1. Keep the deployable static site in `docs/`, including `docs/index.html` and every file it references, such as the local Three.js module in `docs/lib/three.module.js`.
-2. Merge approved pull requests into the team repository's `main` branch.
-3. GitHub Pages automatically publishes the contents of `main/docs`.
-4. After the deployment finishes, open the [playable URL](https://yy6605.github.io/w05-3d-parkour-game/) and verify that the game and its assets load correctly.
+1. Publisher（M1）负责在发布前将完整可部署的静态站点放入 `docs/`，包括 `docs/index.html` 及它引用的所有文件，例如 `docs/lib/three.module.js`。
+2. 将已通过 review 的 PR 合并到团队仓库的 `main` 分支。
+3. GitHub Pages 自动发布 `main/docs` 中的内容。
+4. 部署完成后，打开[在线游玩地址](https://yy6605.github.io/w05-3d-parkour-game/)并确认游戏及其资源能够正常加载。
 
-> Note: The development source is currently stored in `w05_3d_game/`. Before publishing an updated version, the publisher must ensure that the matching deployable files are present in `docs/`, because GitHub Pages is configured to publish `main/docs`.
+> 注意：当前开发源文件存放在 `w05_3d_game/`。由于 GitHub Pages 配置为发布 `main/docs`，M1 必须在最终部署前确认 `docs/` 中存在与开发源对应的完整可部署文件；如果 `docs/` 尚未补齐，不能将线上链接的成功访问视为本次最终版本已经发布成功。
 ## Purpose（游戏介绍）
 
 这是一款使用 HTML、CSS、JavaScript 和 Three.js 制作的浏览器 3D 跑酷游戏。玩家在三条跑道之间切换，通过跳跃、二段跳和滑铲躲避障碍，收集粉色能量方块，为角色技能充能并争取更高分。
